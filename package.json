@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is a stripe payment integration with MERN stack app.",
   "main": "server.js",
+  "engines": {
+    "node": "16.13.0"
+  },
   "scripts": {
     "start": "nodemon backend/server.js",
     "server": "node backend/server.js",
