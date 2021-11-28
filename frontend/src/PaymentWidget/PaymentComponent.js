@@ -1,11 +1,9 @@
 import React from 'react';
-import { Elements } from '@stripe/react-stripe-js';
-import { Card, Row, Button, Col } from 'react-bootstrap';
-import CreditCardForm from './CreditCardForm';
-import './PaymentComponent.css';
-import './Element.css';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import { loadStripe } from '@stripe/stripe-js';
+import CreditCardForm from './CreditCardForm';
+import './Element.css';
+import './PaymentComponent.css';
 
 const PaymentComponent = (props) => {
   let history = useHistory();
@@ -31,9 +29,7 @@ const PaymentComponent = (props) => {
         Elements is Elements provider which pass the strip object to nested component 
 
           */}
-        <Elements stripe={loadStripe(props.keys.stripe)}>
-          <CreditCardForm />
-        </Elements>
+        <CreditCardForm />
       </Card.Body>
     </Card>
   );

@@ -41,7 +41,7 @@ const SubmitButton = ({ processing, error, children, disabled }) => (
   </button>
 );
 
-const CreditCardForm = (props) => {
+const CreditCardForm = () => {
   const history = useHistory();
 
   const stripe = useStripe();
@@ -106,7 +106,7 @@ const CreditCardForm = (props) => {
     });
 
     if (payload.error) {
-      setError(payload.error);
+      setError(payload.error.message);
       return;
     }
 
@@ -159,7 +159,7 @@ const CreditCardForm = (props) => {
         <Modal.Header>
           <Modal.Title style={{ color: 'red' }}>
             Error! - Insert Correct Card Number{' '}
-            <i class="fas fa-exclamation-triangle"></i>
+            <i className="fas fa-exclamation-triangle"></i>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -190,7 +190,7 @@ const CreditCardForm = (props) => {
       <Modal show={success}>
         <Modal.Header>
           <Modal.Title style={{ color: 'green' }}>
-            Payment Succeeded <i class="far fa-check-circle"></i>
+            Payment Succeeded <i className="far fa-check-circle"></i>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>Your cart payment has been confirmed</Modal.Body>
@@ -290,7 +290,11 @@ const CreditCardForm = (props) => {
         />
       </fieldset>
 
-      <SubmitButton processing={processing} error={error} disabled={!stripe}>
+      <SubmitButton
+        processing={processing}
+        error={error}
+        disabled={processing || !stripe}
+      >
         Make Payment
       </SubmitButton>
     </Form>
